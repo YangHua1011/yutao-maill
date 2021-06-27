@@ -29,7 +29,6 @@ public class SeckillPromotionController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:seckillpromotion:list")
     public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = seckillPromotionService.queryPage(params);
 
@@ -41,7 +40,6 @@ public class SeckillPromotionController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:seckillpromotion:info")
     public ResponseResult info(@PathVariable("id") Long id){
 		SeckillPromotionEntity seckillPromotion = seckillPromotionService.getById(id);
 
@@ -52,7 +50,6 @@ public class SeckillPromotionController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:seckillpromotion:save")
     public ResponseResult save(@RequestBody SeckillPromotionEntity seckillPromotion){
         seckillPromotion.setUserId(1L);
         seckillPromotion.setCreateTime(new Date());
@@ -65,7 +62,6 @@ public class SeckillPromotionController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:seckillpromotion:update")
     public ResponseResult update(@RequestBody SeckillPromotionEntity seckillPromotion){
 		seckillPromotionService.updateById(seckillPromotion);
 
@@ -76,7 +72,6 @@ public class SeckillPromotionController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:seckillpromotion:delete")
     public ResponseResult delete(@RequestBody Long[] ids){
 		seckillPromotionService.removeByIds(Arrays.asList(ids));
 

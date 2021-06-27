@@ -28,7 +28,6 @@ public class CouponController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:coupon:list")
     public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = couponService.queryPage(params);
 
@@ -40,7 +39,6 @@ public class CouponController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:coupon:info")
     public ResponseResult info(@PathVariable("id") Long id){
 		CouponEntity coupon = couponService.getById(id);
 
@@ -51,7 +49,6 @@ public class CouponController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:coupon:save")
     public ResponseResult save(@RequestBody CouponEntity coupon){
 		couponService.save(coupon);
 
@@ -62,7 +59,6 @@ public class CouponController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:coupon:update")
     public ResponseResult update(@RequestBody CouponEntity coupon){
 		couponService.updateById(coupon);
 
@@ -73,7 +69,6 @@ public class CouponController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:coupon:delete")
     public ResponseResult delete(@RequestBody Long[] ids){
 		couponService.removeByIds(Arrays.asList(ids));
 

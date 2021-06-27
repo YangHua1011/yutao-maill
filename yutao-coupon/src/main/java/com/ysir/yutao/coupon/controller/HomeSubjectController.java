@@ -28,7 +28,6 @@ public class HomeSubjectController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:homesubject:list")
     public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = homeSubjectService.queryPage(params);
 
@@ -40,7 +39,6 @@ public class HomeSubjectController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:homesubject:info")
     public ResponseResult info(@PathVariable("id") Long id){
 		HomeSubjectEntity homeSubject = homeSubjectService.getById(id);
 
@@ -71,7 +69,6 @@ public class HomeSubjectController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:homesubject:delete")
     public ResponseResult delete(@RequestBody Long[] ids){
 		homeSubjectService.removeByIds(Arrays.asList(ids));
 

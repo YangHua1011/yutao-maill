@@ -47,7 +47,6 @@ public class CategoryController {
      * 信息
      */
     @RequestMapping("/info/{catId}")
-    //@RequiresPermissions("product:category:info")
     public ResponseResult info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
@@ -58,7 +57,6 @@ public class CategoryController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:category:save")
     public ResponseResult save(@RequestBody CategoryEntity category){
 		categoryService.save(category);
 
@@ -66,7 +64,6 @@ public class CategoryController {
     }
 
     @RequestMapping("/update/sort")
-    //@RequiresPermissions("product:category:update")
     public ResponseResult updateSort(@RequestBody CategoryEntity[] category){
         categoryService.updateBatchById(Arrays.asList(category));
         return ResponseResult.ok();
@@ -76,7 +73,6 @@ public class CategoryController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:category:update")
     public ResponseResult update(@RequestBody CategoryEntity category){
 		categoryService.updateCascade(category);
         return ResponseResult.ok();
@@ -89,7 +85,6 @@ public class CategoryController {
      * SpringMVC自动将请求体的数据（json），转为对应的对象
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:category:delete")
     public ResponseResult delete(@RequestBody Long[] catIds){
 
 

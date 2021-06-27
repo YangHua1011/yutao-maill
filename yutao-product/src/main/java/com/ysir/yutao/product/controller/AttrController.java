@@ -59,7 +59,6 @@ public class AttrController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("product:attr:list")
     public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = attrService.queryPage(params);
 
@@ -71,7 +70,6 @@ public class AttrController {
      * 信息
      */
     @RequestMapping("/info/{attrId}")
-    //@RequiresPermissions("product:attr:info")
     public ResponseResult info(@PathVariable("attrId") Long attrId){
 		//AttrEntity attr = attrService.getById(attrId);
         AttrRespVo respVo = attrService.getAttrInfo(attrId);
@@ -83,7 +81,6 @@ public class AttrController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("product:attr:save")
     public ResponseResult save(@RequestBody AttrVo attr){
 		attrService.saveAttr(attr);
 
@@ -97,7 +94,6 @@ public class AttrController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("product:attr:update")
     public ResponseResult update(@RequestBody AttrVo attr){
 		attrService.updateAttr(attr);
 
@@ -118,7 +114,6 @@ public class AttrController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("product:attr:delete")
     public ResponseResult delete(@RequestBody Long[] attrIds){
 		attrService.removeByIds(Arrays.asList(attrIds));
 
