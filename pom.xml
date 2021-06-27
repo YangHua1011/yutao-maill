@@ -15,6 +15,7 @@
 		<module>yutao-order</module>
 		<module>yutao-product</module>
 		<module>yutao-ware</module>
+		<module>yutao-common</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>
