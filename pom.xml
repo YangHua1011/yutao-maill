@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.ysir.yutao</groupId>
+	<artifactId>yutao</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>yutao</name>
+	<description>余淘商城聚合服务模块</description>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>yutao-coupon</module>
+		<module>yutao-member</module>
+		<module>yutao-order</module>
+		<module>yutao-product</module>
+		<module>yutao-ware</module>
+	</modules>
+	<properties>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>2020.0.3</spring-cloud.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
