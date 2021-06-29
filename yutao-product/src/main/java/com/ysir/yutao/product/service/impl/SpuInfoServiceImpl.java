@@ -7,7 +7,7 @@ import com.ysir.yutao.common.utils.Query;
 import com.ysir.yutao.common.utils.ResponseResult;
 import com.ysir.yutao.product.dao.SpuInfoDao;
 import com.ysir.yutao.product.entity.*;
-import com.ysir.yutao.product.feign.CouponFeignService;
+//import com.ysir.yutao.product.feign.CouponFeignService;
 import com.ysir.yutao.product.service.*;
 import com.ysir.yutao.product.vo.*;
 import org.springframework.beans.BeanUtils;
@@ -50,8 +50,8 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
     @Autowired
     SkuSaleAttrValueService skuSaleAttrValueService;
 
-    @Autowired
-    CouponFeignService couponFeignService;
+//    @Autowired
+//    CouponFeignService couponFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -113,10 +113,10 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
         SpuBoundTo spuBoundTo = new SpuBoundTo();
         BeanUtils.copyProperties(bounds,spuBoundTo);
         spuBoundTo.setSpuId(infoEntity.getId());
-        ResponseResult r = couponFeignService.saveSpuBounds(spuBoundTo);
-        if(r.getCode() != 0){
-            log.error("远程保存spu积分信息失败");
-        }
+//        ResponseResult r = couponFeignService.saveSpuBounds(spuBoundTo);
+//        if(r.getCode() != 0){
+//            log.error("远程保存spu积分信息失败");
+//        }
 
 
         //5、保存当前spu对应的所有sku信息；
@@ -176,10 +176,10 @@ public class SpuInfoServiceImpl extends ServiceImpl<SpuInfoDao, SpuInfoEntity> i
                 BeanUtils.copyProperties(item,skuReductionTo);
                 skuReductionTo.setSkuId(skuId);
                 if(skuReductionTo.getFullCount() >0 || skuReductionTo.getFullPrice().compareTo(new BigDecimal("0")) == 1){
-                    ResponseResult r1 = couponFeignService.saveSkuReduction(skuReductionTo);
-                    if(r1.getCode() != 0){
-                        log.error("远程保存sku优惠信息失败");
-                    }
+//                    ResponseResult r1 = couponFeignService.saveSkuReduction(skuReductionTo);
+//                    if(r1.getCode() != 0){
+//                        log.error("远程保存sku优惠信息失败");
+//                    }
                 }
 
 

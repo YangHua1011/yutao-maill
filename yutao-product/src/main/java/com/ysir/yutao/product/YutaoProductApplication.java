@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.atguigu.gulimall.product.dao")
+@MapperScan("com.ysir.yutao.product.dao")
 public class YutaoProductApplication {
 
 	public static void main(String[] args) {

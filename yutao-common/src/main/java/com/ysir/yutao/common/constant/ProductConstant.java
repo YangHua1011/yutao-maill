@@ -1,6 +1,5 @@
 package com.ysir.yutao.common.constant;
 
-import lombok.Data;
 
 public class ProductConstant {
 

@@ -1,16 +1,15 @@
 package com.ysir.yutao.product.entity;
 
-import com.atguigu.common.valid.AddGroup;
-import com.atguigu.common.valid.ListValue;
-import com.atguigu.common.valid.UpdateGroup;
-import com.atguigu.common.valid.UpdateStatusGroup;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 
+import com.ysir.yutao.common.valid.AddGroup;
+import com.ysir.yutao.common.valid.ListValue;
+import com.ysir.yutao.common.valid.UpdateGroup;
+import com.ysir.yutao.common.valid.UpdateStatusGroup;
 import lombok.Data;
-import org.hibernate.validator.constraints.URL;
 
 import javax.validation.constraints.*;
 
@@ -42,7 +41,7 @@ public class BrandEntity implements Serializable {
 	 * 品牌logo地址
 	 */
 	@NotBlank(groups = {AddGroup.class})
-	@URL(message = "logo必须是一个合法的url地址",groups={AddGroup.class,UpdateGroup.class})
+//	@URL(message = "logo必须是一个合法的url地址",groups={AddGroup.class,UpdateGroup.class})
 	private String logo;
 	/**
 	 * 介绍

@@ -1,6 +1,5 @@
 package com.ysir.yutao.product.vo;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.ysir.yutao.product.entity.AttrEntity;
 import lombok.Data;
 
