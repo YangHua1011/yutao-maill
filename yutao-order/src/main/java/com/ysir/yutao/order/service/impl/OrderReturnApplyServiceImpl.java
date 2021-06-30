@@ -1,16 +1,15 @@
 package com.ysir.yutao.order.service.impl;
 
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.common.utils.Query;
+import com.ysir.yutao.order.dao.OrderReturnApplyDao;
+import com.ysir.yutao.order.entity.OrderReturnApplyEntity;
+import com.ysir.yutao.order.service.OrderReturnApplyService;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.Query;
-
-import com.atguigu.gulimall.order.dao.OrderReturnApplyDao;
-import com.atguigu.gulimall.order.entity.OrderReturnApplyEntity;
-import com.atguigu.gulimall.order.service.OrderReturnApplyService;
 
 
 @Service("orderReturnApplyService")

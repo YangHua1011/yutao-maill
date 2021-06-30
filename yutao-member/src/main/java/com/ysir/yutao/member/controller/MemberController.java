@@ -7,6 +7,7 @@ import com.ysir.yutao.common.utils.PageUtils;
 import com.ysir.yutao.common.utils.ResponseResult;
 import com.ysir.yutao.member.entity.MemberEntity;
 import com.ysir.yutao.member.feign.CouponFeignService;
+import com.ysir.yutao.member.feign.CouponFeignService;
 import com.ysir.yutao.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,7 @@ public class MemberController {
         memberEntity.setNickname("张三");
 
         ResponseResult membercoupons = couponFeignService.membercoupons();
-        return ResponseResult.ok().put("member",memberEntity).put("coupons",membercoupons.get("coupons"));
+        return ResponseResult.ok().put("mapper/member",memberEntity).put("coupons",membercoupons.get("coupons"));
     }
 
 
@@ -48,7 +49,6 @@ public class MemberController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("member:member:list")
     public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = memberService.queryPage(params);
 
@@ -60,18 +60,16 @@ public class MemberController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("member:member:info")
     public ResponseResult info(@PathVariable("id") Long id){
 		MemberEntity member = memberService.getById(id);
 
-        return ResponseResult.ok().put("member", member);
+        return ResponseResult.ok().put("mapper/member", member);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("member:member:save")
     public ResponseResult save(@RequestBody MemberEntity member){
 		memberService.save(member);
 
@@ -82,7 +80,6 @@ public class MemberController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("member:member:update")
     public ResponseResult update(@RequestBody MemberEntity member){
 		memberService.updateById(member);
 
@@ -93,7 +90,6 @@ public class MemberController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("member:member:delete")
     public ResponseResult delete(@RequestBody Long[] ids){
 		memberService.removeByIds(Arrays.asList(ids));
 

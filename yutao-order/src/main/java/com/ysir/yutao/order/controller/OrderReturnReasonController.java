@@ -3,6 +3,10 @@ package com.ysir.yutao.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.common.utils.ResponseResult;
+import com.ysir.yutao.order.entity.OrderReturnReasonEntity;
+import com.ysir.yutao.order.service.OrderReturnReasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gulimall.order.entity.OrderReturnReasonEntity;
-import com.atguigu.gulimall.order.service.OrderReturnReasonService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
 
 
 
@@ -35,10 +35,10 @@ public class OrderReturnReasonController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("order:orderreturnreason:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = orderReturnReasonService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseResult.ok().put("page", page);
     }
 
 
@@ -47,10 +47,10 @@ public class OrderReturnReasonController {
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:orderreturnreason:info")
-    public R info(@PathVariable("id") Long id){
+    public ResponseResult info(@PathVariable("id") Long id){
 		OrderReturnReasonEntity orderReturnReason = orderReturnReasonService.getById(id);
 
-        return R.ok().put("orderReturnReason", orderReturnReason);
+        return ResponseResult.ok().put("orderReturnReason", orderReturnReason);
     }
 
     /**
@@ -58,10 +58,10 @@ public class OrderReturnReasonController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("order:orderreturnreason:save")
-    public R save(@RequestBody OrderReturnReasonEntity orderReturnReason){
+    public ResponseResult save(@RequestBody OrderReturnReasonEntity orderReturnReason){
 		orderReturnReasonService.save(orderReturnReason);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -69,10 +69,10 @@ public class OrderReturnReasonController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("order:orderreturnreason:update")
-    public R update(@RequestBody OrderReturnReasonEntity orderReturnReason){
+    public ResponseResult update(@RequestBody OrderReturnReasonEntity orderReturnReason){
 		orderReturnReasonService.updateById(orderReturnReason);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -80,10 +80,10 @@ public class OrderReturnReasonController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("order:orderreturnreason:delete")
-    public R delete(@RequestBody Long[] ids){
+    public ResponseResult delete(@RequestBody Long[] ids){
 		orderReturnReasonService.removeByIds(Arrays.asList(ids));
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
 }

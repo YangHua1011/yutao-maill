@@ -3,6 +3,10 @@ package com.ysir.yutao.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.common.utils.ResponseResult;
+import com.ysir.yutao.order.entity.RefundInfoEntity;
+import com.ysir.yutao.order.service.RefundInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gulimall.order.entity.RefundInfoEntity;
-import com.atguigu.gulimall.order.service.RefundInfoService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
 
 
 
@@ -35,10 +35,10 @@ public class RefundInfoController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("order:refundinfo:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = refundInfoService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseResult.ok().put("page", page);
     }
 
 
@@ -47,10 +47,10 @@ public class RefundInfoController {
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:refundinfo:info")
-    public R info(@PathVariable("id") Long id){
+    public ResponseResult info(@PathVariable("id") Long id){
 		RefundInfoEntity refundInfo = refundInfoService.getById(id);
 
-        return R.ok().put("refundInfo", refundInfo);
+        return ResponseResult.ok().put("refundInfo", refundInfo);
     }
 
     /**
@@ -58,10 +58,10 @@ public class RefundInfoController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("order:refundinfo:save")
-    public R save(@RequestBody RefundInfoEntity refundInfo){
+    public ResponseResult save(@RequestBody RefundInfoEntity refundInfo){
 		refundInfoService.save(refundInfo);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -69,10 +69,10 @@ public class RefundInfoController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("order:refundinfo:update")
-    public R update(@RequestBody RefundInfoEntity refundInfo){
+    public ResponseResult update(@RequestBody RefundInfoEntity refundInfo){
 		refundInfoService.updateById(refundInfo);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -80,10 +80,10 @@ public class RefundInfoController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("order:refundinfo:delete")
-    public R delete(@RequestBody Long[] ids){
+    public ResponseResult delete(@RequestBody Long[] ids){
 		refundInfoService.removeByIds(Arrays.asList(ids));
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
 }

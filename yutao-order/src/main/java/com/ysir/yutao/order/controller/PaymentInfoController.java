@@ -3,6 +3,10 @@ package com.ysir.yutao.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.common.utils.ResponseResult;
+import com.ysir.yutao.order.entity.PaymentInfoEntity;
+import com.ysir.yutao.order.service.PaymentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gulimall.order.entity.PaymentInfoEntity;
-import com.atguigu.gulimall.order.service.PaymentInfoService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
 
 
 
@@ -35,10 +35,10 @@ public class PaymentInfoController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("order:paymentinfo:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = paymentInfoService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseResult.ok().put("page", page);
     }
 
 
@@ -47,10 +47,10 @@ public class PaymentInfoController {
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:paymentinfo:info")
-    public R info(@PathVariable("id") Long id){
+    public ResponseResult info(@PathVariable("id") Long id){
 		PaymentInfoEntity paymentInfo = paymentInfoService.getById(id);
 
-        return R.ok().put("paymentInfo", paymentInfo);
+        return ResponseResult.ok().put("paymentInfo", paymentInfo);
     }
 
     /**
@@ -58,10 +58,10 @@ public class PaymentInfoController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("order:paymentinfo:save")
-    public R save(@RequestBody PaymentInfoEntity paymentInfo){
+    public ResponseResult save(@RequestBody PaymentInfoEntity paymentInfo){
 		paymentInfoService.save(paymentInfo);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -69,10 +69,10 @@ public class PaymentInfoController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("order:paymentinfo:update")
-    public R update(@RequestBody PaymentInfoEntity paymentInfo){
+    public ResponseResult update(@RequestBody PaymentInfoEntity paymentInfo){
 		paymentInfoService.updateById(paymentInfo);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -80,10 +80,10 @@ public class PaymentInfoController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("order:paymentinfo:delete")
-    public R delete(@RequestBody Long[] ids){
+    public ResponseResult delete(@RequestBody Long[] ids){
 		paymentInfoService.removeByIds(Arrays.asList(ids));
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
 }

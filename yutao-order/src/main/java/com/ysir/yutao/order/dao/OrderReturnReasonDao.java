@@ -1,7 +1,7 @@
 package com.ysir.yutao.order.dao;
 
-import com.atguigu.gulimall.order.entity.OrderReturnReasonEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ysir.yutao.order.entity.OrderReturnReasonEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

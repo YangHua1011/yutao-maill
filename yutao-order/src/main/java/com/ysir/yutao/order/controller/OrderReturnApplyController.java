@@ -3,6 +3,10 @@ package com.ysir.yutao.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.common.utils.ResponseResult;
+import com.ysir.yutao.order.entity.OrderReturnApplyEntity;
+import com.ysir.yutao.order.service.OrderReturnApplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.atguigu.gulimall.order.entity.OrderReturnApplyEntity;
-import com.atguigu.gulimall.order.service.OrderReturnApplyService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.common.utils.R;
 
 
 
@@ -35,10 +35,10 @@ public class OrderReturnApplyController {
      */
     @RequestMapping("/list")
     //@RequiresPermissions("order:orderreturnapply:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public ResponseResult list(@RequestParam Map<String, Object> params){
         PageUtils page = orderReturnApplyService.queryPage(params);
 
-        return R.ok().put("page", page);
+        return ResponseResult.ok().put("page", page);
     }
 
 
@@ -47,10 +47,10 @@ public class OrderReturnApplyController {
      */
     @RequestMapping("/info/{id}")
     //@RequiresPermissions("order:orderreturnapply:info")
-    public R info(@PathVariable("id") Long id){
+    public ResponseResult info(@PathVariable("id") Long id){
 		OrderReturnApplyEntity orderReturnApply = orderReturnApplyService.getById(id);
 
-        return R.ok().put("orderReturnApply", orderReturnApply);
+        return ResponseResult.ok().put("orderReturnApply", orderReturnApply);
     }
 
     /**
@@ -58,10 +58,10 @@ public class OrderReturnApplyController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("order:orderreturnapply:save")
-    public R save(@RequestBody OrderReturnApplyEntity orderReturnApply){
+    public ResponseResult save(@RequestBody OrderReturnApplyEntity orderReturnApply){
 		orderReturnApplyService.save(orderReturnApply);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -69,10 +69,10 @@ public class OrderReturnApplyController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("order:orderreturnapply:update")
-    public R update(@RequestBody OrderReturnApplyEntity orderReturnApply){
+    public ResponseResult update(@RequestBody OrderReturnApplyEntity orderReturnApply){
 		orderReturnApplyService.updateById(orderReturnApply);
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
     /**
@@ -80,10 +80,10 @@ public class OrderReturnApplyController {
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("order:orderreturnapply:delete")
-    public R delete(@RequestBody Long[] ids){
+    public ResponseResult delete(@RequestBody Long[] ids){
 		orderReturnApplyService.removeByIds(Arrays.asList(ids));
 
-        return R.ok();
+        return ResponseResult.ok();
     }
 
 }

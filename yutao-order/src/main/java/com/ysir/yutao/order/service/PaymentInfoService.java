@@ -1,8 +1,8 @@
 package com.ysir.yutao.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.atguigu.common.utils.PageUtils;
-import com.atguigu.gulimall.order.entity.PaymentInfoEntity;
+import com.ysir.yutao.common.utils.PageUtils;
+import com.ysir.yutao.order.entity.PaymentInfoEntity;
 
 import java.util.Map;
 
