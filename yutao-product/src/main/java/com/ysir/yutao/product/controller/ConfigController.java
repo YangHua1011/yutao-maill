@@ -1,4 +1,4 @@
-package com.ysir.yutao.coupon.controller;
+package com.ysir.yutao.product.controller;
 
 import com.ysir.yutao.common.utils.ResponseResult;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RefreshScope
-@RequestMapping("/coupon/config")
+@RequestMapping("/product/config")
 public class ConfigController {
 
-    @Value(value = "${coupon.env}")
+    @Value(value = "${product.env}")
     String dev;
 
     @RequestMapping("/getEnv")
