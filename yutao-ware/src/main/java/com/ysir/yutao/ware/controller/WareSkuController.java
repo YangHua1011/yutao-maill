@@ -1,20 +1,17 @@
 package com.ysir.yutao.ware.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.api.R;
+import com.ysir.yutao.common.to.SkuHasStockVo;
 import com.ysir.yutao.common.utils.PageUtils;
 import com.ysir.yutao.common.utils.ResponseResult;
 import com.ysir.yutao.ware.entity.WareSkuEntity;
 import com.ysir.yutao.ware.service.WareSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -41,6 +38,19 @@ public class WareSkuController {
         return ResponseResult.ok().put("page", page);
     }
 
+    /**
+     * 查询sku是否有库存
+     * @return
+     */
+    @PostMapping(value = "/hasStock")
+    public ResponseResult getSkuHasStock(@RequestBody List<Long> skuIds) {
+
+        //skuId stock
+        List<SkuHasStockVo> vos = wareSkuService.getSkuHasStock(skuIds);
+
+        return ResponseResult.ok().setData(vos);
+
+    }
 
     /**
      * 信息

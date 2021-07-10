@@ -1,17 +1,20 @@
 package com.ysir.yutao.ware.service.impl;
 
+import com.ysir.yutao.common.to.SkuHasStockVo;
 import com.ysir.yutao.common.utils.ResponseResult;
 import com.ysir.yutao.common.utils.PageUtils;
 import com.ysir.yutao.common.utils.Query;
 import com.ysir.yutao.ware.dao.WareSkuDao;
 import com.ysir.yutao.ware.entity.WareSkuEntity;
-//import com.ysir.yutao.ware.feign.ProductFeignService;
+import com.ysir.yutao.ware.feign.ProductFeignService;
 import com.ysir.yutao.ware.service.WareSkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -24,8 +27,8 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
     @Autowired
     WareSkuDao wareSkuDao;
 
-//    @Autowired
-//    ProductFeignService productFeignService;
+    @Autowired
+    ProductFeignService productFeignService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -52,6 +55,18 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
 
         return new PageUtils(page);
     }
+    @Override
+    public List<SkuHasStockVo> getSkuHasStock(List<Long> skuIds) {
+
+        List<SkuHasStockVo> skuHasStockVos = skuIds.stream().map(item -> {
+            Long count = this.baseMapper.getSkuStock(item);
+            SkuHasStockVo skuHasStockVo = new SkuHasStockVo();
+            skuHasStockVo.setSkuId(item);
+            skuHasStockVo.setHasStock(count == null?false:count > 0);
+            return skuHasStockVo;
+        }).collect(Collectors.toList());
+        return skuHasStockVos;
+    }
 
     @Override
     public void addStock(Long skuId, Long wareId, Integer skuNum) {
@@ -67,12 +82,12 @@ public class WareSkuServiceImpl extends ServiceImpl<WareSkuDao, WareSkuEntity> i
             //1、自己catch异常
             //TODO 还可以用什么办法让异常出现以后不回滚？高级
             try {
-//                ResponseResult info = productFeignService.info(skuId);
-//                Map<String,Object> data = (Map<String, Object>) info.get("skuInfo");
+                ResponseResult info = productFeignService.info(skuId);
+                Map<String,Object> data = (Map<String, Object>) info.get("skuInfo");
 
-//                if(info.getCode() == 0){
-//                    skuEntity.setSkuName((String) data.get("skuName"));
-//                }
+                if(info.getCode() == 0){
+                    skuEntity.setSkuName((String) data.get("skuName"));
+                }
             }catch (Exception e){
 
             }

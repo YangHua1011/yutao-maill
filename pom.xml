@@ -16,6 +16,7 @@
 		<module>yutao-product</module>
 		<module>yutao-ware</module>
 		<module>yutao-common</module>
+		<module>yutao-geteway</module>
 	</modules>
 	<properties>
 		<java.version>1.8</java.version>

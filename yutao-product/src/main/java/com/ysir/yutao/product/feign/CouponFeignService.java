@@ -1,15 +1,21 @@
 package com.ysir.yutao.product.feign;
 
-import com.ysir.yutao.common.utils.ResponseResult;
 import com.ysir.yutao.common.to.SkuReductionTo;
 import com.ysir.yutao.common.to.SpuBoundTo;
+import com.ysir.yutao.common.utils.ResponseResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+/**
+ * @Description:
+ * @Created: with IntelliJ IDEA.
+ * @author: 夏沫止水
+ * @createTime: 2020-06-01 08:41
+ **/
+
 @FeignClient("mall-coupon")
 public interface CouponFeignService {
-
 
     /**
      * 1、CouponFeignService.saveSpuBounds(spuBoundTo);
@@ -24,7 +30,6 @@ public interface CouponFeignService {
      */
     @PostMapping("/coupon/spubounds/save")
     ResponseResult saveSpuBounds(@RequestBody SpuBoundTo spuBoundTo);
-
 
     @PostMapping("/coupon/skufullreduction/saveinfo")
     ResponseResult saveSkuReduction(@RequestBody SkuReductionTo skuReductionTo);

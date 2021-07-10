@@ -21,6 +21,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueDao, ProductAttrValueEntity> implements ProductAttrValueService {
 
     @Override
+    public List<ProductAttrValueEntity> baseAttrListforspu(Long spuId) {
+
+        List<ProductAttrValueEntity> attrValueEntityList = this.baseMapper.selectList(
+                new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
+
+        return attrValueEntityList;
+    }
+
+    @Override
     public PageUtils queryPage(Map<String, Object> params) {
         IPage<ProductAttrValueEntity> page = this.page(
                 new Query<ProductAttrValueEntity>().getPage(params),
